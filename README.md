@@ -1,5 +1,4 @@
-Minicrawler
-===========
+# Minicrawler
 
 Minicrawler parses URLs, executes HTTP (HTTP/2) requests while handling cookies, network connection management and SSL/TLS protocols. By default it follows redirect locations and returns a full response, final URL, parsed cookied and more. It is designed to handle *many* request in parallel in a *single thread*. It multiplexes connections, running the read/write communication asynchronously. The whole Minicrawler suite is licensed under the [AGPL license](license.txt).
 
@@ -79,7 +78,7 @@ void main() {
 
 ### Options
 
-```
+```txt
    options:
          -2         disable HTTP/2
          -6         resolve host to IPv6 address only
@@ -153,20 +152,14 @@ Install following dependencies (including header files, i.e. dev packages):
 
 On Linux with apt-get run:
 
-```
+```shell script
 apt-get install libc-ares-dev zlib1g-dev libicu-dev libssl-dev libnghttp2-dev
 ```
 
 The GNU Autotools are also needed and the GNU Compiler Collection, they can be installed by:
-```
+
+```shell script
 apt-get install make autoconf automake autotools-dev libtool gcc
-```
-
-On OS X with [homebrew](http://brew.sh/) run:
-
-```
-brew install c-ares zlib icu4c openssl nghttp2
-brew link c-ares zlib icu4c openssl nghttp2 --force
 ```
 
 Then run:
@@ -182,7 +175,7 @@ sudo make install
 
 On OS X with homebrew `CFLAGS` and `LDFLAGS` need to contain proper paths. You can assign them directly as the configure script options.
 
-```
+```shell script
  ./configure CFLAGS="-I/usr/local/include" LDFLAGS="-L/usr/local/opt -L/usr/local/lib"
 ```
 
@@ -200,18 +193,14 @@ Unit tests are done by simply runnning `make check`. They need php-cli to be ins
 ### Integration Tests
 
 Integration tests require a running instance of [httpbin](https://github.com/Runscope/httpbin). You can use public one like [on nghttp2.org](https://nghttp2.org/httpbin/) or install it locally. For example as a library from PyPI and run it using Gunicorn:
-```
+
+```shell script
 pip install httpbin
 gunicorn httpbin:app
 ```
 
 Then run the following command under `integration-tests` directory
-```
+
+```shell script
 make check HTTPBIN_URL=http://127.0.0.1:8000
 ```
-
-## Users
-
- * [Testomato](https://testomato.com) – A simple website monitoring tool
- * [Flowreader](https://flowreader.com/) – A modern reader with a social twist
- * [add me here](mailto:jan.prachar@wikidi.com)
